@@ -1,0 +1,52 @@
+import React,{useState,useEffect} from 'react';
+import Recipe from './Recipe'
+
+const ListRecipe = ()=>{
+    const APP_ID = "fa710370";
+  const APP_KEY = "b05a64a702399aa22dff1e4185a9a6a3";
+
+  const [recipes, setRecipes] = useState([]);
+  const [search, setSearch] = useState("");
+  const [query,setQuery] = useState("chicken");
+  const [loading, setLoading] = useState(true)
+
+  const getRecipes = async ()=>{
+    const data = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`)
+                       .then(res=>res.json());
+    console.log(data.hits);
+    setRecipes(data.hits);
+    setLoading(false)
+  }
+
+  useEffect(()=>{
+    getRecipes();
+  },[query]);
+
+  const updateSearch = (e)=>{
+    setSearch(e.target.value);
+  }
+
+  const getQuery = (e)=>{
+    setLoading(true)
+    e.preventDefault();
+    setQuery(search);
+  }
+
+  return (
+    <div className="App">
+      <div className="form-div">
+      <form className="search-form col-md-4" onSubmit={getQuery}>
+        <input className="search-bar form-control" type="text" onChange={updateSearch} value={search}/>
+        <button className="search-button btn btn-primary" type="submit">Search</button>
+      </form>
+      </div>
+      <div className="row" style={{padding:"20px"}}>
+      {!loading ? recipes.map((recipe,index)=>{
+        return <Recipe data={recipe} key={index}/>
+      }): <h1 style={{color:"red",width:"100%",textAlign:"center",marginTop:"30vh"}}>Loading...</h1>}
+      </div>
+    </div>
+  );
+}
+
+export default ListRecipe;
