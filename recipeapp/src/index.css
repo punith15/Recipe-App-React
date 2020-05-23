@@ -4,8 +4,10 @@
   box-sizing: border-box;
 }
 
+html, body {width: auto!important; overflow-x: hidden!important} 
+
 body{
-  width: 100%;
+  width: 100% !important;
   height: 100vh;
   overflow-x: hidden !important;
 }
@@ -13,10 +15,18 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 400px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background: linear-gradient(to right,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("https://ourcity.co.in/uploads/admin/category/Restaurant.jpg");
 }
 
 .search-form{
-  margin: 20px 0px;
+  margin: 0px 0 20px 0px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -65,4 +75,30 @@ nav{
   .navbar-expand-lg .navbar-nav{
     padding-left:70%;
   }
+}
+
+.menu{
+  width:100%;
+  text-align:center;
+  margin-top: 20px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.load{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.loader {
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

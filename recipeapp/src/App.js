@@ -3,7 +3,6 @@ import Nav from './Nav'
 import ListRecipe from './ListRecipe'
 import ViewRecipe from './ViewRecipe'
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
-import {RecipeProvider} from './RecipeContext'
 
 function App() {
   return(

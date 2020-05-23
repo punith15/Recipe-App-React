@@ -35,15 +35,17 @@ const ListRecipe = ()=>{
   return (
     <div className="App">
       <div className="form-div">
+      <h1 style={{color:"white"}}>Love For Food Never Ends..!!!</h1>
       <form className="search-form col-md-4" onSubmit={getQuery}>
         <input className="search-bar form-control" type="text" onChange={updateSearch} value={search}/>
         <button className="search-button btn btn-primary" type="submit">Search</button>
       </form>
       </div>
+      <h3 className="menu">Menu</h3>
       <div className="row" style={{padding:"20px"}}>
       {!loading ? recipes.map((recipe,index)=>{
         return <Recipe data={recipe} key={index}/>
-      }): <h1 style={{color:"red",width:"100%",textAlign:"center",marginTop:"30vh"}}>Loading...</h1>}
+      }): <div className="load"><div className="loader"></div></div>}
       </div>
     </div>
   );

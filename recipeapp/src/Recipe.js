@@ -1,15 +1,8 @@
 import React,{useContext} from 'react'
 import './index.css'
 import {Link} from 'react-router-dom'
-import {RecipeContext} from './RecipeContext'
 
 const Recipe = ({data})=>{
-    // const [recipeData,setRecipeData] = useContext(RecipeContext);
-    
-    // const handleClick = (e)=>{
-    //     //attachData(data)
-    //     setRecipeData(data);
-    // }
 
     return (
         <div className="col-md-3">
@@ -30,8 +23,5 @@ const Recipe = ({data})=>{
     )
 }
 
-export const attachData=(data)=>{
-    return data;
-}
 
 export default Recipe;
